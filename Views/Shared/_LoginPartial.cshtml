@@ -1,26 +1,27 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+﻿@inject SignInManager<UserModel> SignInManager
+@inject UserManager<UserModel> UserManager
 
-<ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
+@if (!User.Identity!.IsAuthenticated)
 {
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
+    <a class="btn btn-outline-secondary my-2 my-sm-0" asp-controller="Auth" asp-action="Login">
+        <i class="bi bi-box-arrow-in-right"></i> Log in
+    </a>
+    <span style="padding: 5px;"></span>
+
+    <a class="btn btn-outline-dark my-2 my-sm-0" asp-controller="Auth" asp-action="Registration">
+        <i class="bi bi-person-plus"></i> Register
+    </a>
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+    <button class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
+    </button>
+    <span style="padding: 5px;"></span>
+    <form asp-controller="Auth" asp-action="Logout">
+        <button class="btn btn-outline-danger my-2 my-sm-0">
+            <i class="bi bi-box-arrow-in-right"></i> Log out
+        </button>
+    </form>
 }
-</ul>
+

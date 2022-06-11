@@ -3,6 +3,13 @@
 }
 
 <div class="text-center">
+    @if(TempData["Success"] != null)
+            {
+                <div class="col-md-12 alert alert-success">
+                    <span><b>Hurraa!</b> @TempData["Error"] </span>
+                </div>
+            }
+
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

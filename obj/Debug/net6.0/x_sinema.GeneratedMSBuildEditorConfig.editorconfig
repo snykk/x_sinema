@@ -15,8 +15,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Dev\Website\ASP.NET\x_sinema
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Dev/Website/ASP.NET/x_sinema/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+[D:/Dev/Website/ASP.NET/x_sinema/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dev/Website/ASP.NET/x_sinema/Views/Auth/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dev/Website/ASP.NET/x_sinema/Views/Auth/RegistrationCompleted.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3RyYXRpb25Db21wbGV0ZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Dev/Website/ASP.NET/x_sinema/Views/Home/Index.cshtml]
