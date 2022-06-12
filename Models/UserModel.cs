@@ -11,10 +11,10 @@ namespace x_sinema.Models
     {
         [Required]
         [Display(Name = "Firstname")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
         [Required]
         [Display(Name = "LastName")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
     }
 }
 

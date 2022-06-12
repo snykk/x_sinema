@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Movies home page";
+    ViewData["css"] = "Movies/index.css";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+<div class="container">
+<div class="row">
+        @for(int i = 0; i < 10; i++)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card agent">
+                    <div class="agent-avatar">
+                        <a href="agent-profile.html">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/avatar.jpg?alt=media&token=aea22f5e-91a1-45f6-857e-9fcc5b9992b6" class="img-fluid " alt="">
+                        </a>
+                    </div>
+                    <div class="agent-content">
+                        <div class="agent-name">
+                            <h4><a href="agent-profile.html">Nama Movies</a></h4>
+                            <span>Category, City</span>
+                            @*<ul class="list-unstyled team-info m-b-0">
+                        <li class="m-r-15"><small>Actors</small></li>
+                        <li><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar"></li>
+                        <li><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar"></li>
+                        </ul>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@await Html.PartialAsync("_AddMovies", "Movies")

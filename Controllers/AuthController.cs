@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using x_sinema.Constans;
 using x_sinema.Data;
@@ -7,6 +8,7 @@ using x_sinema.ViewModels;
 
 namespace x_sinema.Controllers
 {
+    [Authorize]
     public class AuthController : Controller
     {
         private readonly UserManager<UserModel> _userManager;
@@ -25,6 +27,7 @@ namespace x_sinema.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Registration() => View(new RegistrationViewModel());
 
         [HttpPost]
@@ -59,6 +62,7 @@ namespace x_sinema.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login() => View(new LoginViewModel());
 
         [HttpPost]
@@ -76,7 +80,7 @@ namespace x_sinema.Controllers
                     if (result.Succeeded)
                     {
                         TempData["Success"] = "Login success";
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Movies");
                     }
                 }
                 TempData["Error"] = "Wrong credentials. Please, try again!";
@@ -91,7 +95,7 @@ namespace x_sinema.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Movies");
         }
 
     }
