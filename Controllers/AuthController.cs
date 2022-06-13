@@ -31,6 +31,7 @@ namespace x_sinema.Controllers
         public IActionResult Registration() => View(new RegistrationViewModel());
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Registration(RegistrationViewModel registerViewModel)
         {
             if (!ModelState.IsValid) return View(registerViewModel);
@@ -66,6 +67,7 @@ namespace x_sinema.Controllers
         public IActionResult Login() => View(new LoginViewModel());
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid) return View(loginViewModel);

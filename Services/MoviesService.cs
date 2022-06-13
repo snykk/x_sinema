@@ -47,12 +47,12 @@ namespace x_sinema.Services
         public async Task<MovieModel> GetMovieByIdAsync(int id)
         {
             var movieDetails = await _db.Movies
-                .Include(c => c.Cinema)
-                .Include(p => p.Producer)
-                .Include(am => am.MovieActor).ThenInclude(a => a.Actor)
+                .Include(c => c.Cinema!)
+                .Include(p => p.Producer!)
+                .Include(am => am.MovieActor!).ThenInclude(a => a.Actor)
                 .FirstOrDefaultAsync(n => n.Id == id);
 
-            return movieDetails;
+            return movieDetails!;
         }
 
         public async Task<NewMovieDropdownViewModel> GetNewMovieDropdownsValues()
@@ -101,11 +101,6 @@ namespace x_sinema.Services
                 await _db.Actors_Movies.AddAsync(newActorMovie);
             }
             await _db.SaveChangesAsync();
-        }
-
-        Task<NewMovieDropdownViewModel> IMoviesService.GetNewMovieDropdownsValues()
-        {
-            throw new NotImplementedException();
         }
     }
 }

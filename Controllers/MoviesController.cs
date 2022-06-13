@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 using x_sinema.Constans;
 using x_sinema.Models;
 using x_sinema.Services;
+using x_sinema.ViewModels;
 
 namespace x_sinema.Controllers
 {
@@ -24,6 +26,36 @@ namespace x_sinema.Controllers
         {
             var allMovieData = await _movieService.GetAllAsync(n => n.Cinema!);
             return View(allMovieData);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+            var movieDropdownsData = await _movieService.GetNewMovieDropdownsValues();
+
+            ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
+            ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(NewMovieViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var movieDropdownsData = await _movieService.GetNewMovieDropdownsValues();
+
+                ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+                ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
+                ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
+
+                return View(model);
+            }
+
+            await _movieService.AddNewMovieAsync(model);
+            return RedirectToAction(nameof(Index));
         }
 
         [AllowAnonymous]
