@@ -1,36 +1,74 @@
 ﻿@model IEnumerable<MovieModel>
 @{
-    ViewData["Title"] = "Movies home page";
+    ViewData["Title"] = "Home Page";
     ViewData["css"] = "Movies/index.css";
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-<div class="container">
-<div class="row">
-        @foreach(var item in Model)
-        {
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card agent">
-                    <div class="agent-avatar">
-                        <a href="agent-profile.html">
-                            <img src="@item.ImageURL" class="img-fluid " alt="">
-                        </a>
-                    </div>
-                    <div class="agent-content">
-                        <div class="agent-name">
-                            <h4><a href="agent-profile.html">@item.Name</a></h4>
-                            <span>@item.MovieCategory, City</span>
-                            @*<ul class="list-unstyled team-info m-b-0">
-                        <li class="m-r-15"><small>Actors</small></li>
-                        <li><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar"></li>
-                        <li><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar"></li>
-                        </ul>*@
-                        </div>
-                    </div>
+ <div class="container">
+    @foreach (var item in Model)
+    {
+         <div class="movie-card">
+            <div class="movie-header manOfSteel" style="background: url('@item.ImageURL') no-repeat; background-size:cover;">
+                <div class="header-icon-container">
+                    <a href="./detail_film.php">
+                        <i class="material-icons header-icon"></i>
+                    </a>
                 </div>
             </div>
-        }
-    </div>
+            <div class="movie-content">
+                <div class="movie-content-header d-flex justify-content-between align-items-center">
+                    <div href="#" class="d-flex justify-content-between align-items-center">
+                        <h3 class="movie-title"><a href="./detail_film.php">@item.Name</a></h3>
+                        <a href="#"><i class="bi bi-pencil-square mx-3"></i></a>
+                    </div>
+                    @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+                    {
+                        <div class="badge bg-success">Available</div>
+                    }
+                    else if (DateTime.Now > item.EndDate)
+                    {
+                        <div class="badge bg-danger">Expired</div>
+                    }
+                    else
+                    {
+                        <div class="badge bg-primary">Comming Soon</div>
+                    }
+                </div>
+                <div class="movie-info">
+                    <div class="info-section">
+                        <label>Description</label>
+                        <span class="text-muted" style="text-transform: lowercase !important; font-weight: 500;">@item.Description.</span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="movie-info">
+                    <div class="info-section">
+                        <label>Start date</label>
+                        <span>@item.StartDate.ToString("dd MMM yy")</span>
+                    </div>
+                    <div class="info-section">
+                        <label>Cinema</label>
+                        <span>@item.Cinema.Name</span>
+                    </div>
+                    <div class="info-section">
+                        <label>Category</label>
+                        <span>@item.MovieCategory</span>
+                    </div>
+                </div>
+                <div class="movie-info">
+                    <div class="info-section">
+                        <label>End date</label>
+                        <span>@item.EndDate.ToString("dd MMM yy")</span>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <button class="btn btn-success fs-5 ms-0 me-1"><i class="bi bi-cart-plus me-2"></i>Add to chart</button>
+                    <a asp-action="Detail" asp-route-id="@item.Id" class="ms-1 me-0"><button class="btn btn-outline-info fs-5"><i class="bi bi-eye me-2"></i>Detail</button></a>
+                </div>
+            </div>
+        </div>   
+    }
 </div>
 
 @await Html.PartialAsync("_AddMovies", "Movies")
