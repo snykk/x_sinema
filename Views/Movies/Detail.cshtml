@@ -1,0 +1,108 @@
+﻿@model MovieModel
+
+@{
+    ViewData["Title"] = "Movie details";
+    ViewData["css"] = "Movies/detail.css";
+}
+
+<div class="my-container">
+    <div class="row m-0">
+        <div class="col-lg-7 pb-5 pe-lg-3">
+            <div class="row">
+                <div class="col-12 p-4">
+                    <img src="@Model.ImageURL" class="image-fluid">
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="col-lg-5 ps-lg-0 mr-lg-4">
+            <div class="row m-0">
+                <div class="col-12">
+                    <div class="mt-4 mb-2">
+                        <p class="h4 m-0">@Model.Name</p>
+                    </div>
+                    <div class="fs-6 mb-4">
+                        @Model.Description.
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="textmuted">Cinema</p>
+                        <a href="#">
+                            <p class="fs-14 fw-bold">@Model.Cinema.Name</p>
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="textmuted">Producer</p>
+                        <a href="#">
+                            <p class="fs-14 fw-bold">@Model.Producer.FullName</p>
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="textmuted">Category</p>
+                        <a href="#">
+                            <p class="fs-14 fw-bold">@Model.MovieCategory</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="fs-4 mb-2">List of actor </div>
+                    <div class="row m-0">
+                        @foreach (var actor in Model.MovieActor)
+                        {
+                            <div class="col-md-4 me-1 col-6">
+                                <div style="width: 100px; height: 100px;">
+                                    <img class="rounded" src="@actor.Actor.ProfilePictureURL" alt="">
+                                </div>
+                                <p class=" mb-2"><a asp-controller="Actors" asp-action="Detail" asp-route-id="@actor.ActorId" style="font-size: 0.8rem">@actor.Actor.FullName</a></p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-12 px-0">
+                    <div class="row bg-light m-0">
+                        <div class="col-12 px-4 my-4">
+                            <p class="fw-bold">More detail</p>
+                        </div>
+                        <div class="col-12 px-4">
+                            <div class="row d-flex align-items-center mb-4">
+                                <div class="col-6">
+                                    <p class="text-muted">Start date</p>
+                                    <input class="my-form-control" type="text" value="@Model.StartDate.ToString("dd MMM yy")" disabled>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-muted">End date</p>
+                                    <input class="my-form-control" type="text" value="@Model.EndDate.ToString("dd MMM yy")" disabled>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <p class="text-muted  fs-5">Status</p>
+                                @if (DateTime.Now >= Model.StartDate && DateTime.Now <= Model.EndDate)
+                                {
+                                    <p class="badge bg-success">Available</p>
+                                }
+                                else if (DateTime.Now > Model.EndDate)
+                                {
+                                    <p class="badge bg-danger">Expired</p>
+                                    <span class="badge bg-danger text-white">EXPIRED</span>
+                                }
+                                else
+                                {
+                                    <p class="badge bg-primary">Comming Soon</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0 my-4 p-0">
+                        <div class="col-6">
+                            <a asp-controller="Movies" asp-action="index" class="btn btn-outline-secondary w-100" style="margin: auto"><i class="bi bi-cart-plus me-2"></i>Back to Home</a>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-success w-100"><i class="bi bi-cart-plus me-2"></i>Add to Chart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

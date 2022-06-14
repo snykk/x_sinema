@@ -1,7 +1,7 @@
 ﻿
 @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
 {
-    <div class="text-white d-flex justify-content-end">
+    <div class="w-30">
         <a asp-controller="Movies" asp-action="Add" class="btn btn-success">
             <i class="bi bi-plus-circle"></i> Add New Movie
         </a>

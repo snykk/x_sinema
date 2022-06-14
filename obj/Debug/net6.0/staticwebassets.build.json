@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xyn51oNKbEw/3ZXUNqiJndRRBExtNcDdDICm8c5j+ro=",
+  "Hash": "vz7bob3Bpv7Op4oJXkZLggsv5v7JT0WTCuWizIQSBwk=",
   "Source": "x_sinema",
   "BasePath": "_content/x_sinema",
   "Mode": "Default",
@@ -1071,12 +1071,12 @@
       "OriginalItemSpec": "D:\\Dev\\Website\\ASP.NET\\x_sinema\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\x_sinema.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Dev\\Website\\ASP.NET\\x_sinema\\wwwroot\\css\\site.css",
+      "Identity": "D:\\Dev\\Website\\ASP.NET\\x_sinema\\wwwroot\\css\\Movies\\detail.css",
       "SourceId": "x_sinema",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Dev\\Website\\ASP.NET\\x_sinema\\wwwroot\\",
       "BasePath": "_content/x_sinema",
-      "RelativePath": "css/site.css",
+      "RelativePath": "css/Movies/detail.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1085,7 +1085,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
+      "OriginalItemSpec": "wwwroot\\css\\Movies\\detail.css"
+    },
+    {
+      "Identity": "D:\\Dev\\Website\\ASP.NET\\x_sinema\\wwwroot\\css\\Movies\\index.css",
+      "SourceId": "x_sinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Dev\\Website\\ASP.NET\\x_sinema\\wwwroot\\",
+      "BasePath": "_content/x_sinema",
+      "RelativePath": "css/Movies/index.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Movies\\index.css"
     },
     {
       "Identity": "D:\\Dev\\Website\\ASP.NET\\x_sinema\\wwwroot\\favicon.ico",

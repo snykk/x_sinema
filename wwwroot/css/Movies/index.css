@@ -1,109 +1,179 @@
-﻿body {
-    background: #eee;
+﻿@import url("https://fonts.googleapis.com/css?family=Arimo:400,700");
+
+body {
+    height: 100%;
+    width: 100%;
+    background: #e9e9e9;
+    font-family: 'Arimo', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #010b26;
 }
 
-.m-r-15,
-.product-report .icon {
-    margin-right: 15px;
+* {
+    box-sizing: border-box;
+    -webkit-transition: 300ms;
+    transition: 300ms;
+}
+
+.intro {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    font-weight: 400;
 }
 
 a {
-    color: #f96332;
+    text-decoration: none;
+    color: inherit;
 }
 
-.agent .agent-content .agent-name h4 {
-    font-size: 17px;
+    a:hover {
+        color: #6ABCEA;
+    }
+
+.container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex !important;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
 
-.card {
-    background: #fff;
-    margin-bottom: 30px;
-    transition: 0.5s;
-    border: 0;
-    border-radius: 0.1875rem;
+.movie-card {
+    background: #ffffff;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-radius: 10px;
     display: inline-block;
+}
+
+.movie-header {
+    padding: 0;
+    margin: 0;
+    height: 520px;
+    width: 100%;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.header-icon-container {
     position: relative;
+}
+
+.header-icon {
     width: 100%;
-    box-shadow: none;
+    height: 367px;
+    line-height: 367px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 54px;
+    text-shadow: 0px 0px 20px #6abcea, 0px 5px 20px #6ABCEA;
+    opacity: .85;
 }
 
-.team-info li + li {
-    margin-left: -10px;
+    .header-icon:hover {
+        background: rgba(0, 0, 0, 0.15);
+        font-size: 74px;
+        text-shadow: 0px 0px 20px #6abcea, 0px 5px 30px #6ABCEA;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        opacity: 1;
+    }
+
+.movie-card:hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.social-icons li {
-    display: inline-block;
+.movie-content {
+    padding: 18px 18px 24px 18px;
+    margin: 0;
 }
 
-.team-info li {
+.movie-content-header,
+.movie-info {
+    display: table;
+    width: 100%;
+}
+
+.movie-title {
+    font-size: 24px;
+    margin: 0;
+    display: table-cell;
+}
+
+.imax-logo {
+    width: 50px;
+    height: 15px;
+    background: url("https://6a25bbd04bd33b8a843e-9626a8b6c7858057941524bfdad5f5b0.ssl.cf5.rackcdn.com/media_kit/3e27ede823afbf139c57f1c78a03c870.jpg") no-repeat;
+    background-size: contain;
+    display: table-cell;
+    float: right;
+    position: relative;
     margin-top: 5px;
-    display: inline-block;
 }
 
-    .team-info li img {
-        width: 35px;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        border-radius: 50%;
-        border: 2px solid #fff;
-        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
-    }
-
-.agent .agent-avatar {
-    width: 100%;
+.movie-info {
+    margin-top: 1em;
 }
 
-    .agent .agent-avatar a {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-.agent .agent-content .agent-name {
-    padding: 5px 10px;
+.info-section {
+    display: table-cell;
+    text-transform: uppercase;
+    text-align: center;
 }
 
-    .agent .agent-content .agent-name h4 {
-        font-size: 17px;
-    }
-
-.agent .agent-content .agent-contact-details {
-    list-style: none;
-    color: #9e9e9e;
-    padding: 18px 32px !important;
-    background-color: #f5f5f5;
+.info-section:first-of-type {
+    text-align: left;
 }
 
-    .agent .agent-content .agent-contact-details li {
-        position: relative;
-        margin-left: 28px;
-        line-height: 24px;
-        padding: 3px 0;
-        word-break: break-all;
-    }
-
-        .agent .agent-content .agent-contact-details li i {
-            font-size: 18px;
-            top: 5px;
-            left: -28px;
-            position: absolute;
-        }
-
-        .agent .agent-content .agent-contact-details li span {
-            font-size: 16px;
-        }
-
-.agent .agent-content .social-icons {
-    padding: 10px 17px;
+.info-section:last-of-type {
+    text-align: right;
 }
 
+.info-section label {
+    display: block;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: .5em;
+    font-size: 9px;
+}
 
-    .agent .agent-content .social-icons li {
-        list-style: none;
+.info-section span {
+    font-weight: 700;
+    font-size: 11px;
+}
+
+@media screen and (max-width: 500px) {
+    .movie-card {
+        width: 95%;
+        max-width: 95%;
+        margin: 1em;
+        display: block;
     }
 
-        .agent .agent-content .social-icons li a {
-            padding: 8px 15px;
-        }
+   .container {
+        padding: 0;
+        margin: 0;
+    }
+}

@@ -58,6 +58,15 @@ namespace x_sinema.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Detail(int id)
+        {
+            var movieDetail = await _movieService.GetMovieByIdAsync(id);
+            return View(movieDetail);
+        }
+
+
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
