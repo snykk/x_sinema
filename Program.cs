@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using x_sinema.Data;
-using x_sinema.Models;
 using x_sinema.Services;
+using x_sinema.Models;
 
 namespace x_sinema
 {
@@ -20,6 +20,7 @@ namespace x_sinema
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddScoped<IMoviesService, MoviesService>();
+            builder.Services.AddScoped<IActorsService, ActorsService>();
 
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
