@@ -17,13 +17,23 @@ namespace x_sinema.Controllers
         }
 
         // mengambil data actor by id
+        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Detail(int id)
         {
-            var actorDetails = await _actorService.GetByIdAsync(id);
+            var actorData = await _actorService.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("NotFound");
-            return View(actorDetails);
+            if (actorData == null) return View("NotFound");
+            return View(actorData);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Index()
+        {
+            var allActorData = await _actorService.GetAllAsync();
+            return View(allActorData);
+        }
+
     }
 }

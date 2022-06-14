@@ -5,7 +5,6 @@
     ViewData["css"] = "Actors/Detail.css";
 }
 
-<!-- Breadcrumb -->
 <nav aria-label="breadcrumb" class="main-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
@@ -13,7 +12,7 @@
         <li class="breadcrumb-item active" aria-current="page">Actor Profile</li>
     </ol>
 </nav>
-<!-- /Breadcrumb -->
+
 <hr>
 
 <div class="row gutters-sm">
@@ -64,7 +63,12 @@
                 <hr>
                 <div class="row">
                     <div class="col-sm-12">
-                        <a class="btn btn-info " href="#">Edit</a>
+                        
+                        <a class="btn btn-outline-secondary" asp-action="Index">Tampilkan Semua</a>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <a class="btn btn-dark float-right mx-2" asp-action="Edit" asp-route-id="@Model.Id">Ubah data aktor</a>
+                        }
                     </div>
                 </div>
             </div>

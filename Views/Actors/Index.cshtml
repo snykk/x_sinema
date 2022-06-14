@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ActorModel>
+
+@{
+    ViewData["title"] = "Actor";
+    ViewData["css"] = "Actors/Index.css";
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Actors</li>
+        <li class="breadcrumb-item active" aria-current="page">List of Actors</li>
+    </ol>
+</nav>
+
+<hr>
+
+<div class="panel panel-default panel-order mt-3">
+    <div class="panel-body">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-1"><img src="@item.ProfilePictureURL" class="media-object img-thumbnail" /></div>
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span><strong>FullName</strong></span> : <span class="label label-info">@item.FullName</span><br />
+                            <strong>Bio</strong> : @item.Bio
+                        </div>
+                        <div class="col-md-12"> <span style="visibility: hidden">kesel lur</span></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<br /><br />
