@@ -3,18 +3,18 @@
 
 @if (!User.Identity!.IsAuthenticated)
 {
-    <a class="btn btn-outline-secondary my-2 my-sm-0" asp-controller="Auth" asp-action="Login">
+    <a class="btn btn-success text-white my-2 my-sm-0" asp-controller="Auth" asp-action="Login">
         <i class="bi bi-box-arrow-in-right"></i> Log in
     </a>
     <span style="padding: 5px;"></span>
 
-    <a class="btn btn-outline-dark my-2 my-sm-0" asp-controller="Auth" asp-action="Registration">
+    <a class="btn btn-outline-primary text-white my-2 my-sm-0" asp-controller="Auth" asp-action="Registration">
         <i class="bi bi-person-plus"></i> Register
     </a>
 }
 else
 {
-    <button class="btn btn-outline-secondary" type="button">
+    <button class="btn btn-secondary" type="button">
         <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
     </button>
     <span style="padding: 5px;"></span>

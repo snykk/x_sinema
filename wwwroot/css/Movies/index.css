@@ -42,19 +42,6 @@ a {
         color: #6ABCEA;
     }
 
-.container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex !important;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
 
 .movie-card {
     background: #ffffff;
