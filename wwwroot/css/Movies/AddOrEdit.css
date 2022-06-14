@@ -66,3 +66,9 @@
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
+#movie_image {
+    max-width: 220px;
+    width: auto;
+    height: auto;
+}

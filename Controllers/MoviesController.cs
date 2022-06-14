@@ -66,6 +66,55 @@ namespace x_sinema.Controllers
             return View(movieDetail);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var movieData = await _movieService.GetMovieByIdAsync(id);
+            if (movieData == null) return View("NotFound");
+
+            var response = new NewMovieViewModel()
+            {
+                Id = movieData.Id,
+                Name = movieData.Name,
+                Description = movieData.Description,
+                Price = movieData.Price,
+                StartDate = movieData.StartDate,
+                EndDate = movieData.EndDate,
+                ImageURL = movieData.ImageURL,
+                MovieCategory = movieData.MovieCategory,
+                CinemaId = movieData.CinemaId,
+                ProducerId = movieData.ProducerId,
+                ActorIds = movieData.MovieActor!.Select(n => n.ActorId).ToList(),
+            };
+
+            var movieDropdownsData = await _movieService.GetNewMovieDropdownsValues();
+            ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
+            ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
+
+            return View(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, NewMovieViewModel movie)
+        {
+            if (id != movie.Id) return View("NotFound");
+
+            if (!ModelState.IsValid)
+            {
+                var movieDropdownsData = await _movieService.GetNewMovieDropdownsValues();
+
+                ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+                ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
+                ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
+
+                return View(movie);
+            }
+
+            await _movieService.UpdateMovieAsync(movie);
+            return RedirectToAction(nameof(Index));
+        }
+
 
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -10,7 +10,7 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-4 mb-5">
+        <div class="col-4 mb-4">
             <div class="movie-card">
                 <div class="movie-header" style="background: url('@item.ImageURL') no-repeat; background-size:cover; background-position:center;">
                     <div class="header-icon-container">
@@ -24,9 +24,12 @@
                         <div href="#" class="d-flex justify-content-between align-items-center">
                             <h3 class="movie-title"><a asp-action="Detail" asp-route-id="@item.Id">@item.Name</a></h3>
                         </div>
-                        <div>
-                            <a href="#"><i class="bi bi-pencil-square"></i></a>
-                        </div>
+                        @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <div>
+                                <a asp-controller="Movies" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                            </div>
+                        }
 
                     </div>
                     <div class="movie-info">
@@ -72,8 +75,11 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-4 mb-0">
-                        <button class="btn btn-success fs-5 ms-0 me-1 px-2 py-0"><i class="bi bi-cart-plus me-2"></i>Add to chart</button>
-                        <a asp-action="Detail" asp-route-id="@item.Id" class="ms-1 me-0 p-0"><button class="btn btn-outline-info fs-5 px-2 py-0"><i class="bi bi-eye me-2"></i>Detail</button></a>
+                        @if (User.Identity!.IsAuthenticated && User.IsInRole("User"))
+                        {
+                            <button class="btn btn-success fs-5 ms-0 me-2 px-2 py-0"><i class="bi bi-cart-plus me-2"></i>Add to chart</button>
+                        }
+                        <a asp-action="Detail" asp-route-id="@item.Id" class="me-0 p-0"><button class="btn btn-outline-info fs-5 px-2 py-0"><i class="bi bi-eye me-2"></i>Detail</button></a>
                     </div>
                 </div>
             </div>

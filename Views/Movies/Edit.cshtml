@@ -3,15 +3,14 @@
 @model NewMovieViewModel
 
 @{
-    ViewData["Title"] = "Create a new movie";
+    ViewData["title"] = "Edit Movie Data";
     ViewData["css"] = "Movies/AddOrEdit.css";
 }
-
 <nav aria-label="breadcrumb" class="main-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
         <li class="breadcrumb-item">Movies</li>
-        <li class="breadcrumb-item active" aria-current="page">Add Movie</li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Movies</li>
     </ol>
 </nav>
 
@@ -23,6 +22,7 @@
             <div class="card-body text-center">
                 <img class="rounded img-account-profile mb-2" id="movie_image" src="https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/default.png?alt=media&token=44d223fb-097b-44a1-a8d5-b188e7f69b91" alt="movie image">
                 <hr>
+                <div class="fs-5">@Model.Name</div>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
         <div class="card mb-4">
             <div class="card-header">Movie Details</div>
             <div class="card-body">
-                <form method="post" asp-controller="Movies" asp-action="Add">
+                <form method="post" asp-controller="Movies" asp-action="Edit">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="mb-3">
                         <label class="small mb-1" asp-for="Name">Movie Title</label>
@@ -91,8 +91,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <a class="btn btn-outline-secondary" asp-action="Index">Back to List</a>
-                        <button type="submit" class="btn btn-success">Add Movie to The Database</button>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Back to list</a>
+                        <button type="submit" class="btn btn-success ms-2">Update Movie Data</button>
                     </div>
                 </form>
             </div>
@@ -102,6 +102,11 @@
 
 @section Scripts{
     <script>
+        // ketika document refresh
+        $(document).ready(function () {
+            $("#movie_image").attr("src", $("#ImageURL").val());
+        });
+
         $("#ImageURL").on("change", function() {
             $("#movie_image").attr("src", $(this).val());
         })

@@ -94,9 +94,12 @@
                         <div class="col-6">
                             <a asp-controller="Movies" asp-action="index" class="btn btn-outline-secondary w-100" style="margin: auto"><i class="bi bi-arrow-left me-2"></i>Back to Home</a>
                         </div>
-                        <div class="col-6">
-                            <button class="btn btn-success w-100"><i class="bi bi-cart-plus me-2"></i>Add to Chart</button>
-                        </div>
+                        @if (User.Identity!.IsAuthenticated && User.IsInRole("User"))
+                        {
+                            <div class="col-6">
+                                <button class="btn btn-success w-100"><i class="bi bi-cart-plus me-2"></i>Add to Chart</button>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
