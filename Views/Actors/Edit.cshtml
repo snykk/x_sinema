@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
         <li class="breadcrumb-item">Actors</li>
-        <li class="breadcrumb-item active" aria-current="page">Add Actor</li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Actor</li>
     </ol>
 </nav>
 
@@ -23,7 +23,7 @@
                 <div class="account-settings">
                     <div class="user-profile">
                         <div class="user-avatar">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/default.png?alt=media&token=44d223fb-097b-44a1-a8d5-b188e7f69b91" alt="Actor Image" id="actor_image">
+                            <img src="@Model.ProfilePictureURL" alt="Actor Image" id="actor_image">
                         </div>
                         <h5 class="user-name" id="actor_name">Actor Name</h5>
                     </div>
@@ -39,7 +39,7 @@
         <div class="card h-100">
             <div class="card-body">
                 <div class="row gutters">
-                    <form method="post" asp-controller="Actors" asp-action="Add">
+                    <form method="post" asp-controller="Actors" asp-action="Edit">
                         <div class="col-12">
                             <h6 class="mb-2 text-primary">Personal Details</h6>
                         </div>
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         <div class="col-12 mb-2">
-                            <button class="btn btn-success" type="submit">Add New Actor</button>
+                            <button class="btn btn-success" type="submit" >Update Actor Data</button>
                             <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-secondary">Back to Actor List</a>
                         </div>
                     </form>

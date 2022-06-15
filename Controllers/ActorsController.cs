@@ -51,5 +51,26 @@ namespace x_sinema.Controllers
             await _actorService.AddAsync(actor);
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var actorData = await _actorService.GetByIdAsync(id);
+            if (actorData == null) return View("NotFound");
+            return View(actorData);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] ActorModel actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            await _actorService.UpdateAsync(id, actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }

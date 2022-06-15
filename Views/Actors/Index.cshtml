@@ -23,11 +23,16 @@
                 <div class="col-md-1"><img src="@item.ProfilePictureURL" class="media-object img-thumbnail" /></div>
                 <div class="col-md-11">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-10">
                             <span><strong>FullName</strong></span> : <span class="label label-info">@item.FullName</span><br />
                             <strong>Bio</strong> : @item.Bio
                         </div>
-                        <div class="col-md-12"> <span style="visibility: hidden">kesel lur</span></div>
+                        <div class="col-2 d-flex justify-content-center align-items-center">
+                            <a class="btn btn-primary px-1 py-0" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-success px-1 py-0 mx-2" asp-action="Detail" asp-route-id="@item.Id"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-danger px-1 py-0" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                        </div>
+                        <div class="col-md-12"> <span style="visibility: hidden;">kesel lur</span></div>
                     </div>
                 </div>
             </div>
