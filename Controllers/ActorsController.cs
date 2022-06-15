@@ -71,6 +71,22 @@ namespace x_sinema.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actorData = await _actorService.GetByIdAsync(id);
+            if (actorData == null) return View("NotFound");
+            return View(actorData);
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            var actorData = await _actorService.GetByIdAsync(id);
+            if (actorData == null) return View("NotFound");
+
+            await _actorService.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

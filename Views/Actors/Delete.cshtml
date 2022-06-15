@@ -1,0 +1,81 @@
+﻿@model ActorModel
+
+@{
+    ViewData["Title"] = "Add a new actor";
+    ViewData["css"] = "Actors/Add.css";
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Actors</li>
+        <li class="breadcrumb-item active" aria-current="page">Delete Actor</li>
+    </ol>
+</nav>
+
+<hr>
+
+<div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="account-settings">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <img src="@Model.ProfilePictureURL" alt="Actor Image" id="actor_image">
+                        </div>
+                        <h5 class="user-name">@Model.FullName</h5>
+                    </div>
+                    <div class="about">
+                        <h5>Bio</h5>
+                        <p>@Model.Bio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row gutters">
+                    <div class="col-12">
+                        <h6 class="mb-2 text-primary">Personal Details</h6>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="form-group">
+                            <label asp-for="FullName">Full Name</label>
+                            <input type="text" class="form-control" asp-for="FullName" readonly>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="form-group">
+                            <label asp-for="ProfilePictureURL">Image Url</label>
+                            <input type="text" class="form-control" asp-for="ProfilePictureURL" readonly>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="form-group">
+                            <label asp-for="Bio">Bio</label>
+                            <input type="text" class="form-control" asp-for="Bio" readonly>
+                        </div>
+                    </div>
+                    <div class="col-5 mt-3">
+                        <form method="post" asp-controller="Actors" asp-action="DeletePost" class="d-flex justify-content-start align-items-center">
+                            <input type="hidden" asp-for="Id" />
+                            <button class="btn btn-danger me-3" type="submit">Delete Actor</button>
+                            <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-secondary">Back to Actor List</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
