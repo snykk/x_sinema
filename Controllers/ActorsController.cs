@@ -35,5 +35,21 @@ namespace x_sinema.Controllers
             return View(allActorData);
         }
 
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add([Bind("FullName,ProfilePictureURL,Bio")] ActorModel actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            await _actorService.AddAsync(actor);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

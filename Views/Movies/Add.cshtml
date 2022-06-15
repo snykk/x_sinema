@@ -31,7 +31,7 @@
             <div class="card-header">Movie Details</div>
             <div class="card-body">
                 <form method="post" asp-controller="Movies" asp-action="Add">
-                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="mb-3">
                         <label class="small mb-1" asp-for="Name">Movie Title</label>
                         <input class="form-control" asp-for="Name" type="text" placeholder="Enter movie title here">
@@ -102,8 +102,14 @@
 
 @section Scripts{
     <script>
-        $("#ImageURL").on("change", function() {
-            $("#movie_image").attr("src", $(this).val());
+        $("#ImageURL").on("keyup", function() {
+            if ($(this).val() != "") {
+                $("#movie_image").attr("src", $(this).val());
+            } else {
+                $("#movie_image").attr("src", "https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/default.png?alt=media&token=44d223fb-097b-44a1-a8d5-b188e7f69b91");
+            }
         })
+
+
     </script>
 }

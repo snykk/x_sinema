@@ -1,9 +1,0 @@
-﻿
-@if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <div class="w-30 mb-4">
-        <a asp-controller="Movies" asp-action="Add" class="btn btn-success">
-            <i class="bi bi-plus-circle me-1"></i> Add New Movie
-        </a>
-    </div>
-}

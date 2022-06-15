@@ -1,0 +1,116 @@
+﻿@model ActorModel
+
+@{
+    ViewData["Title"] = "Add a new actor";
+    ViewData["css"] = "Actors/Add.css";
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Actors</li>
+        <li class="breadcrumb-item active" aria-current="page">Add Actor</li>
+    </ol>
+</nav>
+
+<hr>
+
+
+<div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="account-settings">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/default.png?alt=media&token=44d223fb-097b-44a1-a8d5-b188e7f69b91" alt="Actor Image" id="actor_image">
+                        </div>
+                        <h5 class="user-name" id="actor_name">Actor Name</h5>
+                    </div>
+                    <div class="about">
+                        <h5>Bio</h5>
+                        <p id="actor_bio">Not yet....</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row gutters">
+                    <form method="post" asp-controller="Actors" asp-action="Add">
+                        <div class="col-12">
+                            <h6 class="mb-2 text-primary">Personal Details</h6>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-12 mb-2">
+                            <div class="form-group">
+                                <label asp-for="FullName">Full Name</label>
+                                <input type="text" class="form-control" asp-for="FullName" placeholder="Enter full name here">
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="form-group">
+                                <label asp-for="ProfilePictureURL">Image Url</label>
+                                <input type="text" class="form-control" asp-for="ProfilePictureURL" placeholder="Enter actor image url here">
+                                <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <div class="form-group">
+                                <label asp-for="Bio">Bio</label>
+                                <input type="text" class="form-control" asp-for="Bio" placeholder="Enter actor bio">
+                                <span asp-validation-for="Bio" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <button class="btn btn-success">Add New Actor</button>
+                            <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-secondary">Back to Actor List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+@section Scripts{
+    <script>
+        $("#FullName").on("keyup", function() {
+            if ($(this).val() != "") {
+                $("#actor_name").html($(this).val());
+            } else {
+                $("#actor_name").html("Actor Name");
+            }
+        })
+
+        $("#ProfilePictureURL").on("keyup", function() {
+            if ($(this).val() != "") {
+                $("#actor_image").attr("src", $(this).val());
+            } else {
+                $("#actor_image").attr("src", "https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/default.png?alt=media&token=44d223fb-097b-44a1-a8d5-b188e7f69b91");
+            }
+        })
+
+        $("#Bio").on("keyup", function() {
+            if ($(this).val() != "") {
+                $("#actor_bio").html($(this).val());
+
+            } else {
+                $("#actor_bio").html("Not yet....");
+            }
+        })
+
+        $("#")
+    </script>
+} 
