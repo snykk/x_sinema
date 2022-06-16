@@ -31,7 +31,7 @@
             <div class="card-header">Movie Details</div>
             <div class="card-body">
                 <form method="post" asp-controller="Movies" asp-action="Edit">
-                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="mb-3">
                         <label class="small mb-1" asp-for="Name">Movie Title</label>
                         <input class="form-control" asp-for="Name" type="text" placeholder="Enter movie title here">

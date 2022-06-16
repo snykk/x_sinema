@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
     @*custom css in each layout if exist*@
     @if (@ViewData["css"] != null)
@@ -37,11 +38,11 @@
                                 Interface
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" asp-controller="Cinema" asp-action="Index">Cinemas</a></li>
+                                <li><a class="dropdown-item" asp-controller="Producers" asp-action="Index">Producers</a></li>
+                                <li><a class="dropdown-item" asp-controller="Actors" asp-action="Index">Actors</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">List of Users</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="ListOfUsers">List of Users</a></li>
                             </ul>
                         </li>
                     }

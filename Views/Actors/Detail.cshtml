@@ -64,10 +64,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         
-                        <a class="btn btn-outline-secondary" asp-action="Index">Tampilkan Semua</a>
+                        <a class="btn btn-outline-secondary" asp-action="Index">List of Actors</a>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
-                            <a class="btn btn-dark float-right mx-2" asp-action="Edit" asp-route-id="@Model.Id">Ubah data aktor</a>
+                            <a class="btn btn-dark float-right mx-2" asp-action="Edit" asp-route-id="@Model.Id">Edit Data</a>
                         }
                     </div>
                 </div>

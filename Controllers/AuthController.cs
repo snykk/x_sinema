@@ -47,7 +47,7 @@ namespace x_sinema.Controllers
             {
                 FirstName = registerViewModel.FirstName,
                 LastName = registerViewModel.LastName,
-                UserName = registerViewModel.EmailAddress,
+                UserName = registerViewModel.Username,
                 Email = registerViewModel.EmailAddress,
             };
 

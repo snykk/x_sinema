@@ -1,0 +1,48 @@
+﻿@model IEnumerable<UserModel>
+@{
+    ViewData["title"] = "List of Users";
+    ViewData["Css"] = "Admin/ListOfUsers.css";
+    var count = 1;
+}
+
+
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>@ViewData["title"]</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive" id="proTeamScroll" tabindex="2">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@user.FirstName</td>
+                                    <td>@user.LastName</td>
+                                    <td>@user.UserName</td>
+                                    <td class="text-truncate">
+                                        @user.Email
+                                    </td>
+                                </tr>
+                                count = count + 1;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3"><a class="btn btn-secondary" asp-controller="Movies" asp-action="Index">Back to Home</a></div>
+</div>
