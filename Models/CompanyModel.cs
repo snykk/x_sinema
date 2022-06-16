@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace x_sinema.Models
 {
-    public class CinemaModel : IEntityBase
+    public class CompanyModel : IEntityBase
     {
         [Key]
         public int Id { get; set; }

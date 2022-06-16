@@ -55,7 +55,7 @@ namespace x_sinema.Controllers
 
             if (newUserResponse.Succeeded)
             {
-                await _userManager.AddToRoleAsync(newUser, UserRoles.Customer);
+                await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
                 return View("RegistrationCompleted");
             }
 

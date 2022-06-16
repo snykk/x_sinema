@@ -24,7 +24,7 @@ namespace x_sinema.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var allMovieData = await _movieService.GetAllAsync(n => n.Cinema!);
+            var allMovieData = await _movieService.GetAllAsync(n => n.Company!);
             return View(allMovieData);
         }
 
@@ -33,7 +33,7 @@ namespace x_sinema.Controllers
         {
             var movieDropdownsData = await _movieService.GetNewMovieDropdownsValues();
 
-            ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+            ViewBag.Cinemas = new SelectList(movieDropdownsData.Companies, "Id", "Name");
             ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
             ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
 
@@ -47,7 +47,7 @@ namespace x_sinema.Controllers
             {
                 var movieDropdownsData = await _movieService.GetNewMovieDropdownsValues();
 
-                ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+                ViewBag.Cinemas = new SelectList(movieDropdownsData.Companies, "Id", "Name");
                 ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
                 ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
 
@@ -82,13 +82,13 @@ namespace x_sinema.Controllers
                 EndDate = movieData.EndDate,
                 ImageURL = movieData.ImageURL,
                 MovieCategory = movieData.MovieCategory,
-                CinemaId = movieData.CinemaId,
+                CompanyId = movieData.CompanyId,
                 ProducerId = movieData.ProducerId,
                 ActorIds = movieData.MovieActor!.Select(n => n.ActorId).ToList(),
             };
 
             var movieDropdownsData = await _movieService.GetNewMovieDropdownsValues();
-            ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+            ViewBag.Cinemas = new SelectList(movieDropdownsData.Companies, "Id", "Name");
             ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
             ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
 
@@ -104,7 +104,7 @@ namespace x_sinema.Controllers
             {
                 var movieDropdownsData = await _movieService.GetNewMovieDropdownsValues();
 
-                ViewBag.Cinemas = new SelectList(movieDropdownsData.Cinemas, "Id", "Name");
+                ViewBag.Cinemas = new SelectList(movieDropdownsData.Companies, "Id", "Name");
                 ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
                 ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
 

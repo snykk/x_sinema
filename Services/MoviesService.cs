@@ -22,7 +22,7 @@ namespace x_sinema.Services
                 Description = data.Description,
                 Price = data.Price,
                 ImageURL = data.ImageURL,
-                CinemaId = data.CinemaId,
+                CompanyId = data.CompanyId,
                 StartDate = data.StartDate,
                 EndDate = data.EndDate,
                 MovieCategory = data.MovieCategory,
@@ -47,7 +47,7 @@ namespace x_sinema.Services
         public async Task<MovieModel> GetMovieByIdAsync(int id)
         {
             var movieDetails = await _db.Movies
-                .Include(c => c.Cinema!)
+                .Include(c => c.Company!)
                 .Include(p => p.Producer!)
                 .Include(am => am.MovieActor!).ThenInclude(a => a.Actor)
                 .FirstOrDefaultAsync(n => n.Id == id);
@@ -60,7 +60,7 @@ namespace x_sinema.Services
             var response = new NewMovieDropdownViewModel()
             {
                 Actors = await _db.Actors.OrderBy(n => n.FullName).ToListAsync(),
-                Cinemas = await _db.Cinemas.OrderBy(n => n.Name).ToListAsync(),
+                Companies = await _db.Companies.OrderBy(n => n.Name).ToListAsync(),
                 Producers = await _db.Producers.OrderBy(n => n.FullName).ToListAsync()
             };
 
@@ -77,7 +77,7 @@ namespace x_sinema.Services
                 dbMovie.Description = data.Description;
                 dbMovie.Price = data.Price;
                 dbMovie.ImageURL = data.ImageURL;
-                dbMovie.CinemaId = data.CinemaId;
+                dbMovie.CompanyId = data.CompanyId;
                 dbMovie.StartDate = data.StartDate;
                 dbMovie.EndDate = data.EndDate;
                 dbMovie.MovieCategory = data.MovieCategory;

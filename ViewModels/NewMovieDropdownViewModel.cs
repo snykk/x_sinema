@@ -11,12 +11,12 @@ namespace x_sinema.ViewModels
         public NewMovieDropdownViewModel()
         {
             Producers = new List<ProducerModel>();
-            Cinemas = new List<CinemaModel>();
+            Companies = new List<CompanyModel>();
             Actors = new List<ActorModel>();
         }
 
         public List<ProducerModel> Producers { get; set; }
-        public List<CinemaModel> Cinemas { get; set; }
+        public List<CompanyModel> Companies { get; set; }
         public List<ActorModel> Actors { get; set; }
     }
 }

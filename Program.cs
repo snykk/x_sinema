@@ -21,6 +21,7 @@ namespace x_sinema
 
             builder.Services.AddScoped<IMoviesService, MoviesService>();
             builder.Services.AddScoped<IActorsService, ActorsService>();
+            builder.Services.AddScoped<ICompaniesService, CompaniesService>();
 
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

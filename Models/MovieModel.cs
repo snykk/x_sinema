@@ -21,10 +21,10 @@ namespace x_sinema.Models
         //Relationship
         public List<MovieActorModel>? MovieActor { get; set; }
 
-        //Cinema
-        public int CinemaId { get; set; }
-        [ForeignKey("CinemaId")]
-        public CinemaModel? Cinema { get; set; }
+        //Company
+        public int CompanyId { get; set; }
+        [ForeignKey("CompanyId")]
+        public CompanyModel? Company { get; set; }
 
         //Producer
         public int ProducerId { get; set; }

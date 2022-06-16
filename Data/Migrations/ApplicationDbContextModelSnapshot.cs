@@ -181,7 +181,7 @@ namespace x_sinema.Data.Migrations
                     b.ToTable("Actors");
                 });
 
-            modelBuilder.Entity("x_sinema.Models.CinemaModel", b =>
+            modelBuilder.Entity("x_sinema.Models.CompanyModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -203,7 +203,7 @@ namespace x_sinema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cinemas");
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("x_sinema.Models.MovieActorModel", b =>
@@ -229,7 +229,7 @@ namespace x_sinema.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CinemaId")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -261,7 +261,7 @@ namespace x_sinema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CinemaId");
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("ProducerId");
 
@@ -439,9 +439,9 @@ namespace x_sinema.Data.Migrations
 
             modelBuilder.Entity("x_sinema.Models.MovieModel", b =>
                 {
-                    b.HasOne("x_sinema.Models.CinemaModel", "Cinema")
+                    b.HasOne("x_sinema.Models.CompanyModel", "Company")
                         .WithMany("Movies")
-                        .HasForeignKey("CinemaId")
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -451,7 +451,7 @@ namespace x_sinema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cinema");
+                    b.Navigation("Company");
 
                     b.Navigation("Producer");
                 });
@@ -461,7 +461,7 @@ namespace x_sinema.Data.Migrations
                     b.Navigation("MovieActor");
                 });
 
-            modelBuilder.Entity("x_sinema.Models.CinemaModel", b =>
+            modelBuilder.Entity("x_sinema.Models.CompanyModel", b =>
                 {
                     b.Navigation("Movies");
                 });

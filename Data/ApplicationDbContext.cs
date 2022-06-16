@@ -29,7 +29,7 @@ namespace x_sinema.Data
         public DbSet<ActorModel> Actors { get; set; }
         public DbSet<MovieModel> Movies { get; set; }
         public DbSet<MovieActorModel> Actors_Movies { get; set; }
-        public DbSet<CinemaModel> Cinemas { get; set; }
+        public DbSet<CompanyModel> Companies { get; set; }
         public DbSet<ProducerModel> Producers { get; set; }
     }
 }
