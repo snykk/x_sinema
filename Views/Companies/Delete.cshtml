@@ -1,0 +1,80 @@
+﻿@model CompanyModel
+
+@{
+    ViewData["Title"] = "Delete company data";
+    ViewData["css"] = "Actors/Add.css";
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Companies</li>
+        <li class="breadcrumb-item active" aria-current="page">Delete Company Data</li>
+    </ol>
+</nav>
+
+<hr>
+
+<div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="account-settings">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <img src="@Model.Logo" alt="Company Logo">
+                        </div>
+                        <h5 class="user-name">@Model.Name</h5>
+                    </div>
+                    <div class="about">
+                        <h5>Description</h5>
+                        <p>@Model.Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row gutters">
+                    <div class="col-12">
+                        <h6 class="mb-2 text-primary">Company Details</h6>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="form-group">
+                            <label asp-for="Name">Company Name</label>
+                            <input type="text" class="form-control" asp-for="Name" readonly>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="form-group">
+                            <label asp-for="Logo">Company Logo</label>
+                            <input type="text" class="form-control" asp-for="Logo" readonly>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="form-group">
+                            <label asp-for="Description">Description</label>
+                            <input type="text" class="form-control" asp-for="Description" readonly>
+                        </div>
+                    </div>
+
+                </div>
+                <form method="post" asp-controller="Companies" asp-action="DeletePost" class="d-flex justify-content-start align-items-center">
+                    <input type="hidden" asp-for="Id" />
+                    <a asp-controller="Companies" asp-action="Index" class="btn btn-outline-secondary me-2">Back to Company List</a>
+                    <button class="btn btn-danger" type="submit">Delete Company Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

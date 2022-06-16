@@ -62,5 +62,23 @@ namespace x_sinema.Controllers
             await _companiesService.AddAsync(companyModel);
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var companyData = await _companiesService.GetByIdAsync(id);
+            if (companyData == null) return View("NotFound");
+            return View(companyData);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            var companyData = await _companiesService.GetByIdAsync(id);
+            if (companyData == null) return View("NotFound");
+
+            await _companiesService.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
