@@ -30,7 +30,7 @@
                             {
                              <tr>
                                 <td class="table-img">
-                                    <img src="@item.Logo" alt="">
+                                    <img src="@item.Logo" alt="@item.Name">
                                 </td>
                                 <td>
                                     <h6 class="mb-0 font-13">@item.Name</h6>
@@ -41,19 +41,19 @@
                                 @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
                                 {
                                     <td style="width: 15%;">
-                                        <a asp-controller="Companies" asp-action="Edit" asp-route-id="" class="table-link">
+                                        <a asp-controller="Companies" asp-action="Edit" asp-route-id="@item.Id" title="Edit data" class="table-link">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a asp-controller="Companies" asp-action="Detail" asp-route-id="" class="table-link info">
+                                        <a asp-controller="Companies" asp-action="Detail" asp-route-id="@item.Id" title="Detail data" class="table-link info">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                                             </span>
                                         </a>
-                                        <a asp-controller="Companies" asp-action="Delete" asp-route-id="" class="table-link danger">
+                                        <a asp-controller="Companies" asp-action="Delete" asp-route-id="@item.Id" title="Delete data" class="table-link danger">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash fa-stack-1x fa-inverse"></i>

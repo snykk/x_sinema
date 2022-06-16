@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using x_sinema.Services;
+using x_sinema.Models;
 
 namespace x_sinema.Controllers
 {
@@ -21,6 +22,31 @@ namespace x_sinema.Controllers
         {
             var allCinemasData = await _companiesService.GetAllAsync();
             return View(allCinemasData);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var companyData = await _companiesService.GetByIdAsync(id);
+            if (companyData == null) return View("NotFound");
+            return View(companyData);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Logo,Name,Description")] CompanyModel companyModel)
+        {
+            if (!ModelState.IsValid) return View(companyModel);
+            await _companiesService.UpdateAsync(id, companyModel);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Detail(int id)
+        {
+            var companyData = await _companiesService.GetByIdAsync(id);
+            if (companyData == null) return View("NotFound");
+            return View(companyData);
         }
     }
 }

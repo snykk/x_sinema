@@ -1,4 +1,4 @@
-﻿@model ActorModel
+﻿@model CompanyModel
 
 @{
     ViewData["Title"] = "Details of the actor";
@@ -8,8 +8,8 @@
 <nav aria-label="breadcrumb" class="main-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Actors</li>
-        <li class="breadcrumb-item active" aria-current="page">Actor Profile</li>
+        <li class="breadcrumb-item">Companies</li>
+        <li class="breadcrumb-item active" aria-current="page">Detail Movie Company</li>
     </ol>
 </nav>
 
@@ -20,10 +20,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
-                    <img src="@Model.ProfilePictureURL" alt="Admin" class="rounded-circle" width="150">
+                    <img src="@Model.Logo" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                        <h4>@Model.FullName</h4>
-                        <p class="text-secondary mb-1">As Actor</p>
+                        <h4>@Model.Name</h4>
+                        <p class="text-secondary mb-1">As Movie Company</p>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        @Model.FullName
+                        @Model.Name
                     </div>
                 </div>
                 <hr>
@@ -46,7 +46,7 @@
                         <h6 class="mb-0">Bio</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        @Model.Bio
+                        @Model.Description
                     </div>
                 </div>
                 <hr>
