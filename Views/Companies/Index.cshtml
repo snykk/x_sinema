@@ -26,42 +26,42 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(var item in Model)
+                            @foreach (var item in Model)
                             {
-                             <tr>
-                                <td class="table-img">
-                                    <img src="@item.Logo" alt="@item.Name">
-                                </td>
-                                <td>
-                                    <h6 class="mb-0 font-13">@item.Name</h6>
-                                </td>
-                                <td>
-                                    @item.Description
-                                </td>
-                                @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
-                                {
-                                    <td style="width: 15%;">
-                                        <a asp-controller="Companies" asp-action="Edit" asp-route-id="@item.Id" title="Edit data" class="table-link">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
-                                        <a asp-controller="Companies" asp-action="Detail" asp-route-id="@item.Id" title="Detail data" class="table-link info">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
-                                        <a asp-controller="Companies" asp-action="Delete" asp-route-id="@item.Id" title="Delete data" class="table-link danger">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
+                                <tr>
+                                    <td class="table-img">
+                                        <img src="@item.Logo" alt="@item.Name">
                                     </td>
-                                }
-                            </tr>   
+                                    <td>
+                                        <h6 class="mb-0 font-13">@item.Name</h6>
+                                    </td>
+                                    <td>
+                                        @item.Description
+                                    </td>
+                                    @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <td style="width: 15%;">
+                                            <a asp-controller="Companies" asp-action="Edit" asp-route-id="@item.Id" title="Edit data" class="table-link">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a asp-controller="Companies" asp-action="Detail" asp-route-id="@item.Id" title="Detail data" class="table-link info">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            <a asp-controller="Companies" asp-action="Delete" asp-route-id="@item.Id" title="Delete data" class="table-link danger">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                    }
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -69,5 +69,9 @@
             </div>
         </div>
     </div>
-    <div class="col-3"><a class="btn btn-secondary" asp-controller="Movies" asp-action="Index">Back to Home</a></div>
+</div>
+
+<div class="d-flex justify-content-end">
+    <a class="btn btn-outline-secondary me-2" asp-controller="Companies" asp-action="Index">Back to Home</a>
+    <a class="btn btn-success" asp-controller="Companies" asp-action="Add">Add New Data</a>
 </div>

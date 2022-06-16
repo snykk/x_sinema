@@ -48,5 +48,19 @@ namespace x_sinema.Controllers
             if (companyData == null) return View("NotFound");
             return View(companyData);
         }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add([Bind("Logo,Name,Description")] CompanyModel companyModel)
+        {
+            if (!ModelState.IsValid) return View(companyModel);
+            await _companiesService.AddAsync(companyModel);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

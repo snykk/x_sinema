@@ -1,15 +1,15 @@
-﻿@model ActorModel
+﻿@model CompanyModel
 
 @{
-    ViewData["Title"] = "Add a new actor";
+    ViewData["Title"] = "Add a new company";
     ViewData["css"] = "Actors/Add.css";
 }
 
 <nav aria-label="breadcrumb" class="main-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Actors</li>
-        <li class="breadcrumb-item active" aria-current="page">Add Actor</li>
+        <li class="breadcrumb-item">Companies</li>
+        <li class="breadcrumb-item active" aria-current="page">Add new Company</li>
     </ol>
 </nav>
 
@@ -25,11 +25,11 @@
                         <div class="user-avatar">
                             <img src="https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/default.png?alt=media&token=44d223fb-097b-44a1-a8d5-b188e7f69b91" alt="Actor Image" id="actor_image">
                         </div>
-                        <h5 class="user-name" id="actor_name">Actor Name</h5>
+                        <h5 class="user-name" id="company_name">Company Name</h5>
                     </div>
                     <div class="about">
-                        <h5>Bio</h5>
-                        <p id="actor_bio">Not yet....</p>
+                        <h5>Description</h5>
+                        <p id="company_description">Not yet....</p>
                     </div>
                 </div>
             </div>
@@ -39,34 +39,34 @@
         <div class="card h-100">
             <div class="card-body">
                 <div class="row gutters">
-                    <form method="post" asp-controller="Actors" asp-action="Add">
+                    <form method="post" asp-controller="Companies" asp-action="Add">
                         <div class="col-12">
-                            <h6 class="mb-2 text-primary">Personal Details</h6>
+                            <h6 class="mb-2 text-primary">Company Details</h6>
                         </div>
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="col-12 mb-2">
                             <div class="form-group">
-                                <label asp-for="FullName">Full Name</label>
-                                <input type="text" class="form-control" asp-for="FullName" placeholder="Enter full name here">
-                                <span asp-validation-for="FullName" class="text-danger"></span>
+                                <label asp-for="Name">Company Name</label>
+                                <input type="text" class="form-control" asp-for="Name" placeholder="Enter company name here">
+                                <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-12 mb-2">
                             <div class="form-group">
-                                <label asp-for="ProfilePictureURL">Image Url</label>
-                                <input type="text" class="form-control" asp-for="ProfilePictureURL" placeholder="Enter actor image url here">
-                                <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
+                                <label asp-for="Logo">Image Url</label>
+                                <input type="text" class="form-control" asp-for="Logo" placeholder="Insert company logo url here">
+                                <span asp-validation-for="Logo" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-12 mb-2">
                             <div class="form-group">
-                                <label asp-for="Bio">Bio</label>
-                                <input type="text" class="form-control" asp-for="Bio" placeholder="Enter actor bio">
-                                <span asp-validation-for="Bio" class="text-danger"></span>
+                                <label asp-for="Description">Description</label>
+                                <input type="text" class="form-control" asp-for="Description" placeholder="Enter actor Description">
+                                <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-12 mt-4">
-                            <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-secondary me-2">Back to Actor List</a>
+                            <a asp-controller="Companies" asp-action="Index" class="btn btn-outline-secondary me-2">Back to Actor List</a>
                             <button class="btn btn-success" type="submit">Add New Actor</button>
                         </div>
                     </form>
@@ -86,15 +86,15 @@
 
 @section Scripts{
     <script>
-        $("#FullName").on("keyup", function() {
+        $("#Name").on("keyup", function() {
             if ($(this).val() != "") {
-                $("#actor_name").html($(this).val());
+                $("#company_name").html($(this).val());
             } else {
-                $("#actor_name").html("Actor Name");
+                $("#company_name").html("Company Name");
             }
         })
 
-        $("#ProfilePictureURL").on("keyup", function() {
+        $("#Logo").on("keyup", function() {
             if ($(this).val() != "") {
                 $("#actor_image").attr("src", $(this).val());
             } else {
@@ -102,12 +102,12 @@
             }
         })
 
-        $("#Bio").on("keyup", function() {
+        $("#Description").on("keyup", function() {
             if ($(this).val() != "") {
-                $("#actor_bio").html($(this).val());
+                $("#company_description").html($(this).val());
 
             } else {
-                $("#actor_bio").html("Not yet....");
+                $("#company_description").html("Not yet....");
             }
         })
 
