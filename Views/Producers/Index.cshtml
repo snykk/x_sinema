@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ProducerModel>
+
+@{
+    ViewData["title"] = "Producer";
+    ViewData["css"] = "Actors/Index.css";
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Producers</li>
+        <li class="breadcrumb-item active" aria-current="page">List of Producers</li>
+    </ol>
+</nav>
+
+<hr>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="main-box clearfix">
+            <div class="table-responsive">
+                <table class="table user-list">
+                    <thead>
+                        <tr>
+                            <th><span>Producer</span></th>
+                            <th><span>Bio</span></th>
+                            @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+
+                                <th class="text-center">Interface</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="width: 25%;">
+                                    <img src="@item.ProfilePictureURL" alt="Image" style="width:50px; height:50px">
+                                    <a href="#" class="user-link">@item.FullName</a>
+                                    <span class="user-subhead">Producer</span>
+                                </td>
+                                <td>
+                                    <div>@item.Bio</div>
+                                </td>
+                                @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+
+                                    <td style="width: 13%;">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="table-link">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                        <a asp-action="Detail" asp-route-id="@item.Id" class="table-link info">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="table-link danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12 d-flex justify-content-end align-items-center mt-4">
+    @await Html.PartialAsync("_ButtonAddPartial", "Producers")
+</div>
+
+<br />
+<br />

@@ -6,7 +6,7 @@ namespace x_sinema.Services
 {
     public class CompaniesService : EntityBaseRepository<CompanyModel>, ICompaniesService
     {
-        public CompaniesService(ApplicationDbContext context) : base(context)
+        public CompaniesService(ApplicationDbContext _db) : base(_db)
         {
         }
     }

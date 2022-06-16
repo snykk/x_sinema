@@ -24,8 +24,8 @@ namespace x_sinema.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var allMovieData = await _movieService.GetAllAsync(n => n.Company!);
-            return View(allMovieData);
+            var allMoviesData = await _movieService.GetAllAsync(n => n.Company!);
+            return View(allMoviesData);
         }
 
         [HttpGet]

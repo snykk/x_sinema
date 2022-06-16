@@ -1,20 +1,19 @@
-﻿@model ActorModel
+﻿@model ProducerModel
 
 @{
-    ViewData["Title"] = "Add a new actor";
+    ViewData["Title"] = "Edit producer";
     ViewData["css"] = "Actors/Add.css";
 }
 
 <nav aria-label="breadcrumb" class="main-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Actors</li>
-        <li class="breadcrumb-item active" aria-current="page">Edit Actor</li>
+        <li class="breadcrumb-item">Producers</li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Producer</li>
     </ol>
 </nav>
 
 <hr>
-
 
 <div class="row gutters">
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -23,13 +22,13 @@
                 <div class="account-settings">
                     <div class="user-profile">
                         <div class="user-avatar">
-                            <img src="@Model.ProfilePictureURL" alt="Actor Image" id="actor_image">
+                            <img src="@Model.ProfilePictureURL" alt="Producer Image" id="producer_image">
                         </div>
-                        <h5 class="user-name" id="actor_name_edit">@Model.FullName</h5>
+                        <h5 class="user-name" id="producer_name">@Model.FullName</h5>
                     </div>
                     <div class="about">
                         <h5>Bio</h5>
-                        <p id="actor_bio">Not yet....</p>
+                        <p id="producer_bio">Not yet....</p>
                     </div>
                 </div>
             </div>
@@ -39,7 +38,7 @@
         <div class="card h-100">
             <div class="card-body">
                 <div class="row gutters">
-                    <form method="post" asp-controller="Actors" asp-action="Edit">
+                    <form method="post" asp-controller="Producers" asp-action="Edit">
                         <div class="col-12">
                             <h6 class="mb-2 text-primary">Personal Details</h6>
                         </div>
@@ -54,20 +53,20 @@
                         <div class="col-12 mb-2">
                             <div class="form-group">
                                 <label asp-for="ProfilePictureURL">Image Url</label>
-                                <input type="text" class="form-control" asp-for="ProfilePictureURL" placeholder="Enter actor image url here">
+                                <input type="text" class="form-control" asp-for="ProfilePictureURL" placeholder="Inser producer image url here">
                                 <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-12 mb-2">
                             <div class="form-group">
                                 <label asp-for="Bio">Bio</label>
-                                <input type="text" class="form-control" asp-for="Bio" placeholder="Enter actor bio">
+                                <input type="text" class="form-control" asp-for="Bio" placeholder="Enter producer bio">
                                 <span asp-validation-for="Bio" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-12 mt-4">
-                            <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-secondary me-2">Back to Actor List</a>
-                            <button class="btn btn-success" type="submit" >Update Actor Data</button>
+                            <a asp-controller="Producers" asp-action="Index" class="btn btn-outline-secondary me-2">Back to Producer List</a>
+                            <button class="btn btn-success" type="submit">Update Producer Data</button>
                         </div>
                     </form>
                 </div>
@@ -89,25 +88,25 @@
         $("#FullName").on("keyup", function() {
             console.log($(this).val());
             if ($(this).val() != "") {
-                $("#actor_name_edit").html($(this).val());
+                $("#producer_name").html($(this).val());
             } else {
-                $("#actor_name_edit").html(@Model.FullName);
+                $("#producer_name").html(@Model.FullName);
             }
         })
 
         $("#ProfilePictureURL").on("keyup", function() {
             if ($(this).val() != "") {
-                $("#actor_image").attr("src", $(this).val());
+                $("#producer_image").attr("src", $(this).val());
             } else {
-                $("#actor_image").attr("src", @Model.ProfilePictureURL);
+                $("#producer_image").attr("src", @Model.ProfilePictureURL);
             }
         })
 
         $("#Bio").on("keyup", function() {
             if ($(this).val() != "") {
-                $("#actor_bio").html($(this).val());
+                $("#producer_bio").html($(this).val());
             } else {
-                $("#actor_bio").html(@Model.Bio);
+                $("#producer_bio").html(@Model.Bio);
             }
         })
     </script>
