@@ -115,6 +115,20 @@ namespace x_sinema.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [AllowAnonymous]
+        public async Task<IActionResult> Search(string search)
+        {
+            var allMovieData = await _movieService.GetAllAsync(n => n.Company!);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                var newResult = allMovieData.Where(n => n.Name.ToLower().Contains(search.ToLower())).ToList();
+
+                return View("Index", newResult);
+            }
+
+            return View("Index", allMovieData);
+        }
 
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

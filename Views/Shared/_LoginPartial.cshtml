@@ -14,9 +14,9 @@
 }
 else
 {
-    <button class="btn btn-secondary" type="button">
-        <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
-    </button>
+    <span class="btn btn-outline-secondary" type="button">
+        <i class="bi bi-person-badge"></i> @UserManager.GetUserName(User)
+    </span>
     <span style="padding: 5px;"></span>
     <form asp-controller="Auth" asp-action="Logout">
         <button class="btn btn-outline-danger my-2 my-sm-0">

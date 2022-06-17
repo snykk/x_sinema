@@ -5,6 +5,16 @@
     ViewData["css"] = "Movies/detail.css";
 }
 
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Movies</li>
+        <li class="breadcrumb-item active" aria-current="page">Detail Movie Data</li>
+    </ol>
+</nav>
+
+<hr>
+
 <div class="my-container">
     <div class="row m-0">
         <div class="col-lg-7 pb-5 pe-lg-3">
@@ -81,7 +91,6 @@
                                 else if (DateTime.Now > Model.EndDate)
                                 {
                                     <p class="badge bg-danger">Expired</p>
-                                    <span class="badge bg-danger text-white">EXPIRED</span>
                                 }
                                 else
                                 {
