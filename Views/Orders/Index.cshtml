@@ -1,0 +1,71 @@
+﻿@model List<OrderModel>
+
+@{
+    ViewData["Title"] = "All orders";
+    ViewData["css"] = "Orders/DetailOrder.css";
+    var count = 1;
+}
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Orders</li>
+        <li class="breadcrumb-item active" aria-current="page">List of Orders</li>
+    </ol>
+</nav>
+
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>List of All Your Orders</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive" id="proTeamScroll" tabindex="2">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Index</th>
+                                    <th>Preview Order</th>
+                                    <th>Total</th>
+                                    <th>User</th>
+                                    <th>Interface</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model)
+                                {
+                                    <tr>
+                                        <td>@count</td>
+                                        <td class="text-truncate">
+                                            <ul class="list-unstyled order-list m-b-0">
+                                                @foreach (var item in order.OrderDetails)
+                                                {
+                                                    <li class="team-member team-member-sm"><img class="rounded-circle" src="@item.Movie.ImageURL" alt="user" data-toggle="tooltip" title="@item.Movie.Name" style="width:30px;height:40px"></li>
+                                                }
+                                                <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <div class="badge-outline col-red">@order.OrderDetails.Select(m => m.Movie.Price * m.Amount).Sum().ToString("c")</div>
+                                        </td>
+                                        <td>
+                                            @order.User.UserName
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Orders" asp-action="DetailOrder" asp-route-id="@order.Id"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                        </td>
+                                    </tr>
+                                    count = count + 1;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

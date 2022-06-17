@@ -25,13 +25,13 @@
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <p class="textmuted">Cinema</p>
-                        <a href="#">
+                        <a asp-controller="Companies" asp-action="Detail" asp-route-id="@Model.Company.Id">
                             <p class="fs-14 fw-bold">@Model.Company.Name</p>
                         </a>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <p class="textmuted">Producer</p>
-                        <a href="#">
+                        <a asp-controller="Producers" asp-action="Detail" asp-route-id="@Model.Producer.Id">
                             <p class="fs-14 fw-bold">@Model.Producer.FullName</p>
                         </a>
                     </div>
@@ -94,10 +94,11 @@
                         <div class="col-6">
                             <a asp-controller="Movies" asp-action="index" class="btn btn-outline-secondary w-100" style="margin: auto"><i class="bi bi-arrow-left me-2"></i>Back to Home</a>
                         </div>
-                        @if (User.Identity!.IsAuthenticated && User.IsInRole("User"))
+                        @if (User.Identity!.IsAuthenticated && User.IsInRole("Customer"))
                         {
                             <div class="col-6">
-                                <button class="btn btn-success w-100"><i class="bi bi-cart-plus me-2"></i>Add to Chart</button>
+                                <a class="btn btn-success w-100" asp-controller="Orders"
+                               asp-action="AddItemToCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus me-2"></i>Add to Chart</a>
                             </div>
                         }
                     </div>

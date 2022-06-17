@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using x_sinema.Data;
 using x_sinema.Services;
 using x_sinema.Models;
+using x_sinema.Servies;
 
 namespace x_sinema
 {
@@ -23,8 +24,10 @@ namespace x_sinema
             builder.Services.AddScoped<IActorsService, ActorsService>();
             builder.Services.AddScoped<ICompaniesService, CompaniesService>();
             builder.Services.AddScoped<IProducersService, ProducersService>();
+            builder.Services.AddScoped<IOrdersService, OrdersService>();
 
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddScoped(sc => Cart.GetCart(sc));
 
             //Authentication and authorization
             builder.Services.AddIdentity<UserModel, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -82,6 +85,7 @@ namespace x_sinema
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();

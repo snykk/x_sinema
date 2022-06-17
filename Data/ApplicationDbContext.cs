@@ -26,10 +26,16 @@ namespace x_sinema.Data
             base.OnModelCreating(modelBuilder);
         }
 
+        // Movie
         public DbSet<ActorModel> Actors { get; set; }
         public DbSet<MovieModel> Movies { get; set; }
         public DbSet<MovieActorModel> Actors_Movies { get; set; }
         public DbSet<CompanyModel> Companies { get; set; }
         public DbSet<ProducerModel> Producers { get; set; }
+
+        // Order
+        public DbSet<OrderModel> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
     }
 }

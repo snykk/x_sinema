@@ -1,0 +1,63 @@
+﻿@model OrderModel
+
+@{
+    ViewData["title"] = "Cart Summary";
+    ViewData["css"] = "Cart/cart_summary.css";
+}
+
+
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Carts</li>
+        <li class="breadcrumb-item active" aria-current="page">Cart Summary</li>
+    </ol>
+</nav>
+
+<hr>
+
+<div class="table-responsive shopping-cart">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Detail Product</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Subtotal</th>
+                <th class="text-center">Interface</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model.OrderDetails)
+            {
+                <tr>
+                    <td>
+                        <div class="product-item">
+                            <a class="product-thumb" href="#"><img src="@item.Movie.ImageURL" alt="@item.Movie.Name"></a>
+                            <div class="product-info">
+                                <h4 class="product-title"><a href="#">@item.Movie.Name</a></h4><span><em>Category : </em>@item.Movie.MovieCategory</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@item.Movie.Price.ToString("c")</td>
+                    <td class="text-center">
+                        @item.Amount
+                    </td>
+                    <td class="text-center text-lg text-medium">@((item.Amount*item.Movie.Price).ToString("c"))</td>
+                    <td class="text-center">
+                        <a class="text-danger me-1" asp-controller="Orders" asp-action="RemoveItemFromCart"
+                       asp-route-id="@item.Movie.Id">
+                            <i class="bi bi-cart-dash"></i>
+                        </a>
+                        <a class="text-success ms-1" asp-controller="Orders" asp-action="AddItemToCart"
+                       asp-route-id="@item.Movie.Id">
+                            <i class="bi bi-cart-plus"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a class="btn btn-outline-secondary mb-5" asp-controller="Orders" asp-action="Index"><i class="bi arow-left"></i>Back to Orders List</a>
