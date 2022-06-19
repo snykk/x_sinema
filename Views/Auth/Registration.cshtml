@@ -56,16 +56,19 @@
                     </div>
                 </div>
                 <div class="text-center text-lg-start mt-2 pt-2">
-                    <button type="submit" class="btn btn-primary btn-lg"
-                            style="padding-left: 2.5rem; padding-right: 2.5rem;">
-                        Regis
-                    </button>
+                    <button type="submit" class="btn btn-dark px-5">Regis</button>
                     <p class="small fw-bold mt-2 pt-1 mb-0">
                         Already have an account? <a asp-controller="Auth" asp-action="Login"
-                                                  class="link-danger">Login Now!!!</a>
+                                                    class="link-danger">Login Now!!!</a>
                     </p>
                 </div>
             </form>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptPartial" />
+    }
+}

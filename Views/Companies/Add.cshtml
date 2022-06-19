@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Add a new company";
-    ViewData["css"] = "Actors/Add.css";
+    ViewData["css"] = "Companies/CUD.css";
 }
 
 <nav aria-label="breadcrumb" class="main-breadcrumb">
@@ -20,9 +20,9 @@
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
         <div class="card h-100">
             <div class="card-body">
-                <div class="account-settings">
-                    <div class="user-profile">
-                        <div class="user-avatar">
+                <div class="preview">
+                    <div class="profile">
+                        <div class="avatar">
                             <img src="https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/default.png?alt=media&token=44d223fb-097b-44a1-a8d5-b188e7f69b91" alt="Actor Image" id="actor_image">
                         </div>
                         <h5 class="user-name" id="company_name">Company Name</h5>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-12 mt-4">
                             <a asp-controller="Companies" asp-action="Index" class="btn btn-outline-secondary me-2">Back to Actor List</a>
-                            <button class="btn btn-success" type="submit">Add New Actor</button>
+                            <button class="btn btn-success" type="submit">Add New Company</button>
                         </div>
                     </form>
                 </div>
@@ -85,32 +85,5 @@
 <br />
 
 @section Scripts{
-    <script>
-        $("#Name").on("keyup", function() {
-            if ($(this).val() != "") {
-                $("#company_name").html($(this).val());
-            } else {
-                $("#company_name").html("Company Name");
-            }
-        })
-
-        $("#Logo").on("keyup", function() {
-            if ($(this).val() != "") {
-                $("#actor_image").attr("src", $(this).val());
-            } else {
-                $("#actor_image").attr("src", "https://firebasestorage.googleapis.com/v0/b/coba-firebase-d3a0e.appspot.com/o/default.png?alt=media&token=44d223fb-097b-44a1-a8d5-b188e7f69b91");
-            }
-        })
-
-        $("#Description").on("keyup", function() {
-            if ($(this).val() != "") {
-                $("#company_description").html($(this).val());
-
-            } else {
-                $("#company_description").html("Not yet....");
-            }
-        })
-
-        $("#")
-    </script>
+    <script src="@Url.Content("~/js/company.js")" type="text/javascript"></script>
 } 

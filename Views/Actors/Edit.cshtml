@@ -2,19 +2,10 @@
 
 @{
     ViewData["Title"] = "Add a new actor";
-    ViewData["css"] = "Actors/Add.css";
+    ViewData["css"] = "Actors/CUD.css";
+    ViewData["controller"] = "Actors";
+    ViewData["action"] = "Edit Actor Data";
 }
-
-<nav aria-label="breadcrumb" class="main-breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Actors</li>
-        <li class="breadcrumb-item active" aria-current="page">Edit Actor Data</li>
-    </ol>
-</nav>
-
-<hr>
-
 
 <div class="row gutters">
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -29,7 +20,7 @@
                     </div>
                     <div class="about">
                         <h5>Bio</h5>
-                        <p id="actor_bio">Not yet....</p>
+                        <p id="actor_bio">@Model.Bio</p>
                     </div>
                 </div>
             </div>
@@ -67,7 +58,7 @@
                         </div>
                         <div class="col-12 mt-4">
                             <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-secondary me-2">Back to Actor List</a>
-                            <button class="btn btn-success" type="submit" >Update Actor Data</button>
+                            <button class="btn btn-success" type="submit">Update Actor Data</button>
                         </div>
                     </form>
                 </div>
@@ -85,30 +76,19 @@
 <br />
 
 @section Scripts{
+    <script src="@Url.Content("~/js/actors/edit.js")" type="text/javascript"></script>
     <script>
         $("#FullName").on("keyup", function() {
-            console.log($(this).val());
-            if ($(this).val() != "") {
-                $("#actor_name_edit").html($(this).val());
-            } else {
-                $("#actor_name_edit").html(@Model.FullName);
-            }
+            $("#actor_name_edit").html($(this).val());
         })
 
         $("#ProfilePictureURL").on("keyup", function() {
-            if ($(this).val() != "") {
-                $("#actor_image").attr("src", $(this).val());
-            } else {
-                $("#actor_image").attr("src", @Model.ProfilePictureURL);
-            }
+            $("#actor_image").attr("src", $(this).val());
         })
 
         $("#Bio").on("keyup", function() {
-            if ($(this).val() != "") {
-                $("#actor_bio").html($(this).val());
-            } else {
-                $("#actor_bio").html(@Model.Bio);
-            }
+            $("#actor_bio").html($(this).val());
         })
     </script>
+
 } 

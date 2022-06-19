@@ -18,8 +18,8 @@ else
         <i class="bi bi-person-badge"></i> @UserManager.GetUserName(User)
     </span>
     <span style="padding: 5px;"></span>
-    <form asp-controller="Auth" asp-action="Logout">
-        <button class="btn btn-outline-danger my-2 my-sm-0">
+    <form method="post" asp-controller="Auth" asp-action="Logout" id="form_logout">
+        <button class="btn btn-outline-danger my-2 my-sm-0" id="button_logout">
             <i class="bi bi-box-arrow-in-right"></i> Log out
         </button>
     </form>

@@ -3,17 +3,9 @@
 @{
     ViewData["title"] = "Actor";
     ViewData["css"] = "Actors/Index.css";
+    ViewData["controller"] = "Actors";
+    ViewData["action"] = "List of Actor";
 }
-
-<nav aria-label="breadcrumb" class="main-breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Actors</li>
-        <li class="breadcrumb-item active" aria-current="page">List of Actor</li>
-    </ol>
-</nav>
-
-<hr>
 
 <div class="row">
     <div class="col-lg-12">
@@ -24,7 +16,7 @@
                         <tr>
                             <th><span>Actor</span></th>
                             <th><span>Bio</span></th>
-                            @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                            @if (User.Identity!.IsAuthenticated && User.IsInRole(UserRoles.Admin))
                             {
 
                                 <th class="text-center">Interface</th>
@@ -43,7 +35,7 @@
                                 <td>
                                     <div>@item.Bio</div>
                                 </td>
-                                @if (User.Identity!.IsAuthenticated && User.IsInRole("Admin"))
+                                @if (User.Identity!.IsAuthenticated && User.IsInRole(UserRoles.Admin))
                                 {
 
                                     <td style="width: 13%;">

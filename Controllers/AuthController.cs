@@ -82,7 +82,7 @@ namespace x_sinema.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
                     if (result.Succeeded)
                     {
-                        TempData["message"] = MyFlasher.flasher("Login success", gagal: true);
+                        TempData["message"] = MyFlasher.flasher("Login success", berhasil: true);
                         return RedirectToAction("Index", "Movies");
                     }
                 }
@@ -99,6 +99,7 @@ namespace x_sinema.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            TempData["message"] = MyFlasher.flasher("Session ended, you Logout <strong>successfully</strong>", berhasil: true);
             return RedirectToAction("Index", "Movies");
         }
 

@@ -1,19 +1,11 @@
 ﻿@model CompanyModel
 
 @{
-    ViewData["Title"] = "Details of the actor";
-    ViewData["css"] = "Actors/Detail.css";
+    ViewData["Title"] = "Details of the company";
+    ViewData["css"] = "Companies/Detail.css";
+    ViewData["controller"] = "Companies";
+    ViewData["action"] = "Detail Movie Company";
 }
-
-<nav aria-label="breadcrumb" class="main-breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Companies</li>
-        <li class="breadcrumb-item active" aria-current="page">Detail Movie Company</li>
-    </ol>
-</nav>
-
-<hr>
 
 <div class="row gutters-sm">
     <div class="col-md-4 mb-3">
@@ -53,7 +45,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         
-                        <a class="btn btn-outline-secondary" asp-action="Index">List of Actors</a>
+                        <a class="btn btn-outline-secondary" asp-action="Index">List of Companies</a>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <a class="btn btn-dark float-right mx-2" asp-action="Edit" asp-route-id="@Model.Id">Edit Data</a>

@@ -3,18 +3,11 @@
 @{
     ViewData["Title"] = "All orders";
     ViewData["css"] = "Orders/DetailOrder.css";
+    ViewData["controller"] = "Actors";
+    ViewData["action"] = "List of Order";
     var count = 1;
 }
 
-<nav aria-label="breadcrumb" class="main-breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Actors</li>
-        <li class="breadcrumb-item active" aria-current="page">List of Order</li>
-    </ol>
-</nav>
-
-<hr>
 
 <div class="container">
     <div class="row">
@@ -27,18 +20,18 @@
                     <div class="table-responsive" id="proTeamScroll" tabindex="2">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>Index</th>
                                     <th>Preview Order</th>
                                     <th>Total</th>
                                     <th>User</th>
-                                    <th>Interface</th>
+                                    <th>Detail</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var order in Model)
                                 {
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>@count</td>
                                         <td class="text-truncate">
                                             <ul class="list-unstyled order-list m-b-0">

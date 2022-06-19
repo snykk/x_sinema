@@ -1,6 +1,7 @@
 ﻿using x_sinema.Models;
 using Microsoft.EntityFrameworkCore;
 using x_sinema.Data;
+using x_sinema.Constans;
 
 namespace x_sinema.Services
 {
@@ -16,7 +17,7 @@ namespace x_sinema.Services
         {
             var orders = await _db.Orders.Include(n => n.OrderDetails).ThenInclude(n => n.Movie).Include(n => n.User).ToListAsync();
 
-            if (userRole != "Admin")
+            if (userRole != UserRoles.Admin)
             {
                 orders = orders.Where(n => n.UserId == userId).ToList();
             }

@@ -3,17 +3,9 @@
 @{
     ViewData["Title"] = "Details of the actor";
     ViewData["css"] = "Actors/Detail.css";
+    ViewData["controller"] = "Actors";
+    ViewData["action"] = "Actor Profile";
 }
-
-<nav aria-label="breadcrumb" class="main-breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Actors</li>
-        <li class="breadcrumb-item active" aria-current="page">Actor Profile</li>
-    </ol>
-</nav>
-
-<hr>
 
 <div class="row gutters-sm">
     <div class="col-md-4 mb-3">
@@ -52,9 +44,8 @@
                 <hr>
                 <div class="row">
                     <div class="col-sm-12">
-                        
                         <a class="btn btn-outline-secondary" asp-action="Index">List of Actors</a>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        @if (User.Identity.IsAuthenticated && User.IsInRole(UserRoles.Admin))
                         {
                             <a class="btn btn-dark float-right mx-2" asp-action="Edit" asp-route-id="@Model.Id">Edit Data</a>
                         }

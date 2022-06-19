@@ -127,7 +127,7 @@ namespace x_sinema.Controllers
                 return View("Index", newResult);
             }
 
-            return View("Index", allMovieData);
+            return RedirectToAction("Index", "Movies");
         }
 
         [AllowAnonymous]

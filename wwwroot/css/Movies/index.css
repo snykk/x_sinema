@@ -8,6 +8,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     color: #010b26;
+    padding-right: 0 !important;
 }
 
 * {
