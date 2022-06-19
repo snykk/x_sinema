@@ -39,7 +39,7 @@ namespace x_sinema.Controllers
             var user = await _userManager.FindByEmailAsync(registerViewModel.EmailAddress);
             if (user != null)
             {
-                TempData["Error"] = "This email address is already in use";
+                TempData["message"] =  MyFlasher.flasher("This email address is already in use", gagal: true);
                 return View(registerViewModel);
             }
 
@@ -56,7 +56,8 @@ namespace x_sinema.Controllers
             if (newUserResponse.Succeeded)
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.Customer);
-                return View("RegistrationCompleted");
+                TempData["message"] = MyFlasher.flasher("Congratulations, your account has been registered!", berhasil: true);
+                return RedirectToAction("Login", "Auth");
             }
 
             return View(registerViewModel);
@@ -81,15 +82,16 @@ namespace x_sinema.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
                     if (result.Succeeded)
                     {
-                        TempData["Success"] = "Login success";
+                        TempData["message"] = MyFlasher.flasher("Login success", gagal: true);
                         return RedirectToAction("Index", "Movies");
                     }
                 }
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+
+                TempData["message"] = MyFlasher.flasher("Wrong password", gagal: true);
                 return View(loginViewModel);
             }
 
-            TempData["Error"] = "Wrong credentials. Please, try again!";
+            TempData["message"] = MyFlasher.flasher("Email address is not registered", gagal: true);
             return View(loginViewModel);
         }
 

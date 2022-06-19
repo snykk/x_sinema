@@ -5,59 +5,67 @@
     ViewData["Title"] = "Registration";
 }
 
-<div class="row">
-    <div class="col-md-6">
-        <h4>Registration Page</h4>
-
-        @if(TempData["Error"] != null)
+<section class="vh-100 vw-80">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-6 col-lg-6 col-xl-7">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                 class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-5">
+            <h4>Registration</h4>
+            @if (TempData["message"] != null)
             {
-                <div class="col-md-12 alert alert-danger">
-                    <span><b>Sorry!</b> @TempData["Error"] </span>
-                </div>
+                @Html.Raw(@TempData["message"])
             }
-
-        <div class="row">
-            <div class="col-md-8">
-                <form method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                    <div class="form-group">
-                        <label asp-for="FirstName" class="control-label"></label>
-                        <input asp-for="FirstName" class="form-control" />
+            <form method="post" asp-controller="Auth" asp-action="Registration">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-outline row mt-4 mb-2">
+                    <div class="col-sm-6">
+                        <label class="form-label" asp-for="FirstName">First Name</label>
+                        <input type="text" class="form-control" asp-for="FirstName" placeholder="First Name">
                         <span asp-validation-for="FirstName" class="text-danger"></span>
-                    </div><div class="form-group">
-                        <label asp-for="LastName" class="control-label"></label>
-                        <input asp-for="LastName" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" asp-for="LastName">Last Name</label>
+                        <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name">
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Username" class="control-label"></label>
-                        <input asp-for="Username" class="form-control" />
-                        <span asp-validation-for="Username" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="EmailAddress" class="control-label"></label>
-                        <input asp-for="EmailAddress" class="form-control" />
-                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label" asp-for="Username">Username</label>
+                    <input type="text" asp-for="Username" class="form-control form-control-lg"
+                           placeholder="Enter username here" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label" asp-for="EmailAddress">Email address</label>
+                    <input type="email" asp-for="EmailAddress" class="form-control form-control-lg"
+                           placeholder="Enter a valid email address" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+                <div class="form-outline row  mb-2">
+                    <div class="col-sm-6">
+                        <label class="form-label" asp-for="Password">Password</label>
+                        <input type="password" class="form-control form-control-lg" asp-for="Password" placeholder="Password">
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="VerifPassword" class="control-label"></label>
-                        <input asp-for="VerifPassword" class="form-control" />
+                    <div class="col-sm-6">
+                        <label class="form-label" asp-for="VerifPassword">Verif Password</label>
+                        <input type="password" class="form-control form-control-lg" asp-for="VerifPassword" placeholder="Verification password">
                         <span asp-validation-for="VerifPassword" class="text-danger"></span>
                     </div>
-
-                    <div class="form-group my-3">
-                        <a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index">Cancel</a>
-                        <input class="btn btn-outline-success float-right" type="submit" value="Sign up" />
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="text-center text-lg-start mt-2 pt-2">
+                    <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                        Regis
+                    </button>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">
+                        Already have an account? <a asp-controller="Auth" asp-action="Login"
+                                                  class="link-danger">Login Now!!!</a>
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
-</div>
-
+</section>
