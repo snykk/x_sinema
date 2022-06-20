@@ -78,7 +78,7 @@ else
 {
     <div class="shopping-cart-footer">
         <div class="column"><a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index"><i class="bi bi-bag-plus me-2"></i>Add More Item</a></div>
-        <div class="column"><a class="btn btn-success" asp-controller="Orders" asp-action="Checkout">Checkout Now</a></div>
+        <div class="column"><a class="btn btn-success" asp-controller="Orders" asp-action="Checkout" id="link_checkout">Checkout Now</a></div>
     </div>
 }
 
@@ -89,3 +89,8 @@ else
     <br />
     <a class="btn btn-outline-secondary mb-5" asp-controller="Movies" asp-action="Index"><i class="bi arow-left"></i>Back to Movie List</a>
 }
+
+
+@section Scripts{
+    <script src="@Url.Content("~/js/order.js")" type="text/javascript"></script>
+} 

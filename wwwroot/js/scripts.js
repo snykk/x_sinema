@@ -4,8 +4,8 @@
     var form = document.getElementById("form_logout");
 
     Swal.fire({
-        title: "Apakah anda yakin?",
-        text: "klik 'logout' jika anda ingin mengakhiri session anda saat ini",
+        title: "Are you sure?",
+        text: "click 'logout' if you want to end your session",
         confirmButtonText: "Logout",
         cancelButtonColor: "#d33",
         showCancelButton: true,
@@ -36,7 +36,7 @@
                 }
             })
         } else {
-            Swal.fire("Gagal melakukan logout", "", "info");
+            Swal.fire("Failed when logout", "", "info");
         }
     });
 });

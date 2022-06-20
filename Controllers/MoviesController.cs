@@ -50,11 +50,14 @@ namespace x_sinema.Controllers
                 ViewBag.Cinemas = new SelectList(movieDropdownsData.Companies, "Id", "Name");
                 ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
                 ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
+                TempData["message"] = MyFlasher.flasher("Oops error was found", gagal: true);
 
                 return View(model);
             }
 
             await _movieService.AddNewMovieAsync(model);
+            TempData["message"] = MyFlasher.flasher("Movie data <strong>added</strong> successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -107,11 +110,14 @@ namespace x_sinema.Controllers
                 ViewBag.Cinemas = new SelectList(movieDropdownsData.Companies, "Id", "Name");
                 ViewBag.Producers = new SelectList(movieDropdownsData.Producers, "Id", "FullName");
                 ViewBag.Actors = new SelectList(movieDropdownsData.Actors, "Id", "FullName");
+                TempData["message"] = MyFlasher.flasher("Oops error was found", gagal: true);
 
                 return View(movie);
             }
 
             await _movieService.UpdateMovieAsync(movie);
+            TempData["message"] = MyFlasher.flasher("Movie data <strong>updated</strong> successfully", berhasil: true);
+            
             return RedirectToAction(nameof(Index));
         }
 

@@ -14,9 +14,9 @@
         </div>
         <div class="col-md-6 col-lg-6 col-xl-5">
             <h4>Log in to your account</h4>
-            @if (TempData["message"] != null)
+            @if (TempData["message_auth"] != null)
             {
-                @Html.Raw(@TempData["message"])
+                @Html.Raw(@TempData["message_auth"])
             }
             <form method="post" asp-controller="Auth" asp-action="Login">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>

@@ -52,10 +52,10 @@
                         </div>
                     </div>
                     <div class="col-5 mt-3">
-                        <form method="post" asp-controller="Actors" asp-action="DeletePost" class="d-flex justify-content-start align-items-center">
+                        <form method="post" asp-controller="Actors" asp-action="DeletePost" class="d-flex justify-content-start align-items-center" id="form_delete_actor">
                             <input type="hidden" asp-for="Id" />
                             <a asp-controller="Actors" asp-action="Index" class="btn btn-outline-secondary me-2">Back to Actor List</a>
-                            <button class="btn btn-danger" type="submit">Delete Actor</button>
+                            <button class="btn btn-danger" type="submit" id="button_delete_actor">Delete Actor</button>
                         </form>
                     </div>
                 </div>
@@ -71,3 +71,8 @@
 <br />
 <br />
 <br />
+
+                            
+@section Scripts{
+    <script src="@Url.Content("~/js/actor.js")" type="text/javascript"></script>
+} 

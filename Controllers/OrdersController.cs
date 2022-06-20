@@ -83,6 +83,7 @@ namespace x_sinema.Controllers
 
             await _ordersService.StoreOrderAsync(items, userId, userEmailAddress);
             await _cart.ClearCartAsync();
+            TempData["message"] = MyFlasher.flasher("Order data <strong>store</strong> successfully into order history", berhasil: true);
 
             return RedirectToAction("Index", "Movies");
         }

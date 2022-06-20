@@ -49,9 +49,16 @@ namespace x_sinema.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProfilePictureURL,FullName,Bio")] ProducerModel producerModel)
         {
-            if (!ModelState.IsValid) return View(producerModel);
+            if (!ModelState.IsValid)
+            {
+                TempData["message"] = MyFlasher.flasher("Oops error was found", gagal: true);
+
+                return View(producerModel);
+            }
 
             await _producerService.UpdateAsync(id, producerModel);
+            TempData["message"] = MyFlasher.flasher("Producer data <strong>updated</strong> successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -79,6 +86,8 @@ namespace x_sinema.Controllers
             if (producerData == null) return View("NotFound");
 
             await _producerService.DeleteAsync(id);
+            TempData["message"] = MyFlasher.flasher("Movie data <strong>deleted</strong> successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
     }

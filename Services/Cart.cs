@@ -1,6 +1,7 @@
 ﻿using x_sinema.Models;
 using Microsoft.EntityFrameworkCore;
 using x_sinema.Data;
+using System.Linq;
 
 namespace x_sinema.Servies
 {

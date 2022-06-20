@@ -37,6 +37,8 @@ namespace x_sinema.Controllers
         {
             if (!ModelState.IsValid) return View(companyModel);
             await _companiesService.UpdateAsync(id, companyModel);
+            TempData["message"] = MyFlasher.flasher("Company data update successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -58,8 +60,16 @@ namespace x_sinema.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([Bind("Logo,Name,Description")] CompanyModel companyModel)
         {
-            if (!ModelState.IsValid) return View(companyModel);
+            if (!ModelState.IsValid)
+            {
+                TempData["message"] = MyFlasher.flasher("Oops error was found", gagal: true);
+
+                return View(companyModel);
+            }
+
             await _companiesService.AddAsync(companyModel);
+            TempData["message"] = MyFlasher.flasher("Company data <strong>updated</strong> successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -78,6 +88,8 @@ namespace x_sinema.Controllers
             if (companyData == null) return View("NotFound");
 
             await _companiesService.DeleteAsync(id);
+            TempData["message"] = MyFlasher.flasher("Company data <strong>deleted</strong> successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
     }
