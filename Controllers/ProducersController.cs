@@ -32,9 +32,15 @@ namespace x_sinema.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([Bind("ProfilePictureURL,FullName,Bio")] ProducerModel producerModel)
         {
-            if (!ModelState.IsValid) return View(producerModel);
+            if (!ModelState.IsValid)
+            {
+                TempData["message"] = MyFlasher.flasher("Oops, error was found!", gagal: true);
+                return View(producerModel);
+            }
 
             await _producerService.AddAsync(producerModel);
+            TempData["message"] = MyFlasher.flasher("Producer data added successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -52,7 +58,6 @@ namespace x_sinema.Controllers
             if (!ModelState.IsValid)
             {
                 TempData["message"] = MyFlasher.flasher("Oops error was found", gagal: true);
-
                 return View(producerModel);
             }
 

@@ -49,6 +49,8 @@ namespace x_sinema.Controllers
                 return View(actor);
             }
             await _actorService.AddAsync(actor);
+            TempData["message"] = MyFlasher.flasher("Actor data added successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -65,9 +67,12 @@ namespace x_sinema.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData["message"] = MyFlasher.flasher("Oops, error was found!", gagal: true);
                 return View(actor);
             }
             await _actorService.UpdateAsync(id, actor);
+            TempData["message"] = MyFlasher.flasher("Actor data update successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -86,6 +91,8 @@ namespace x_sinema.Controllers
             if (actorData == null) return View("NotFound");
 
             await _actorService.DeleteAsync(id);
+            TempData["message"] = MyFlasher.flasher("Actor data deleted successfully", berhasil: true);
+
             return RedirectToAction(nameof(Index));
         }
     }
